@@ -24,7 +24,7 @@ input.readOnly=true;
 const buttons=['+','-','*','/',
                '=','0','1',
                '2','3','4','5',
-               '6','7','8','9','C',
+               '6','7','8','9','.','C',
                'AC'
 ];
 
@@ -42,12 +42,13 @@ function handleButtonClick(text){
         input.value="";
     }
     else if(text==='C'){
-        input.value=input.slice(0,-1);
+        input.value=input.value.slice(0,-1);
     }
     else if(text==='='){
         input.value=calculate(input.value);
     }
     else{
+        if(text==='.' && input.value.includes('.'))return;
         input.value+=text;
     }
 }
